@@ -1,3 +1,5 @@
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Scanner;
 
 public class RewardsConverter {
@@ -14,7 +16,7 @@ public class RewardsConverter {
             return;
         }
         System.out.println("converting $" + input_value + " to miles");
-        var rewardsValue = new RewardValue(cashValue);
-        System.out.println("$" + input_value + " is worth " + rewardsValue.getMilesValue() + " miles");
+        var rewardsValue = new RewardValue(BigDecimal.valueOf(cashValue));
+        System.out.println("$" + input_value + " is worth " + new BigDecimal(String.valueOf(rewardsValue.getMilesValue())).setScale(2, RoundingMode.HALF_UP) + " miles");
     }
 }
